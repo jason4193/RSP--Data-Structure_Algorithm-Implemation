@@ -8,6 +8,7 @@ class Vertex:
     def __init__(self, n):
         self.name = n
         self.neighbors = list()
+        self.visited = False
     
     def add_neighbor(self, v): 
         if v not in self.neighbors:
@@ -78,28 +79,3 @@ class Graph:
         for vertex in self.vertices:
             neighors_names = [neighbor.name for neighbor in vertex.neighbors]
             print(vertex.name, neighors_names)
-
-
-# Driver code
-if __name__ == '__main__':
-    g = Graph()
-    a = Vertex('A')
-    g.add_vertex(a)
-    g.add_vertex(Vertex('B'))
-    
-    for i in range(ord('A'), ord('K')):
-        g.add_vertex(Vertex(chr(i)))
-    
-    edges = [ 'AF', 'AB', 'AE', 'BF', 'CG', 'DE', 'DH', 'EH', 'GF', 'FI', 'FJ', 'GJ']
-    
-    # for vertex in g.vertices:
-    #     print(vertex.name)
-
-    for edge in edges:
-        g.add_edge(edge[0], edge[1])
-    
-    g.print_graph()
-
-    g.remove_vertex('A')
-    print()
-    g.print_graph()
